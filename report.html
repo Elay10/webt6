@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Laboratory Work 5 - Event Registration API</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 18mm;
+    }
+
+    body {
+      color: #172033;
+      font: 11pt/1.45 Arial, sans-serif;
+    }
+
+    h1 {
+      color: #173b67;
+      font-size: 23pt;
+      margin-bottom: 5mm;
+    }
+
+    h2 {
+      color: #173b67;
+      font-size: 15pt;
+      margin: 7mm 0 3mm;
+    }
+
+    .subtitle {
+      color: #536179;
+      font-size: 13pt;
+    }
+
+    .details {
+      margin: 8mm 0;
+    }
+
+    .details div {
+      margin: 2mm 0;
+    }
+
+    figure {
+      margin: 0 0 7mm;
+      break-inside: avoid;
+    }
+
+    figure img {
+      border: 1px solid #cbd3df;
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    figcaption {
+      color: #536179;
+      font-size: 9pt;
+      margin-top: 2mm;
+    }
+
+    .screenshots {
+      break-before: page;
+    }
+
+    .conclusion {
+      margin-top: 7mm;
+    }
+  </style>
+</head>
+<body>
+  <h1>Laboratory Work 5</h1>
+  <div class="subtitle">Spring Boot Event Registration API</div>
+
+  <div class="details">
+    <div><strong>Student:</strong> Bobrovskii Ilya</div>
+    <div><strong>Group:</strong> 2502 DS</div>
+    <div><strong>Purpose:</strong> Build an in-memory REST backend using Spring Boot, a service layer, constructor-based dependency injection, and settings from application.properties.</div>
+  </div>
+
+  <h2>Implementation</h2>
+  <p>The project uses Gradle and Java 17-compatible source code. RegistrationController exposes JSON GET endpoints and delegates event data to EventService through constructor injection. EventInfo is the JSON model; the service keeps three events in memory. The /api/info response reads the application name, course, and semester from application.properties. The optional event lookup returns a clear JSON 404 response when an ID is not found.</p>
+  <p>Validation completed: Gradle tests passed, the application started on port 8080, and all required endpoints plus the missing-event response were checked in a browser and with HTTP requests.</p>
+
+  <section class="screenshots">
+    <h2>Endpoint screenshots</h2>
+    <figure>
+      <img src="report-assets/api-events.png" alt="GET /api/events returns three event objects">
+      <figcaption>Figure 1. GET /api/events — three event objects returned as JSON.</figcaption>
+    </figure>
+    <figure>
+      <img src="report-assets/api-hello.png" alt="GET /api/hello returns the welcome message">
+      <figcaption>Figure 2. GET /api/hello — the service welcome message.</figcaption>
+    </figure>
+    <figure>
+      <img src="report-assets/api-info.png" alt="GET /api/info returns settings from application.properties">
+      <figcaption>Figure 3. GET /api/info — application settings read from application.properties.</figcaption>
+    </figure>
+    <figure>
+      <img src="report-assets/api-event-not-found.png" alt="GET /api/events/99 returns a JSON 404 response">
+      <figcaption>Figure 4. GET /api/events/99 — JSON message for an event ID that does not exist.</figcaption>
+    </figure>
+  </section>
+
+  <div class="conclusion">
+    <h2>Conclusion</h2>
+    <p>This laboratory work introduced the structure of a small Spring Boot REST application. The controller handles HTTP requests while the service provides the welcome message and in-memory event data. Constructor-based dependency injection keeps the controller separate from service creation. The API returned JSON for the required endpoints, and the optional lookup produced a clear 404 response for an unknown event.</p>
+  </div>
+</body>
+</html>
